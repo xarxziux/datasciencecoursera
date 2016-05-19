@@ -7,10 +7,10 @@ This is my submission for the 2nd programming assignment on the Coursera MOOC [h
 ### Usage sample
 ```R
 > # Load the script into the console.
-> source ("Cache_Matrix.R")
+> source ("cachematrix.R")
 > # Create the cache object using a square matrix with an known inverse.
 > cacheObject <- makeCacheMatrix (matrix (c (1,0,1,2,4,0,3,5,6),3,3))
-> # Calculate, update and print the inverse of the original matrix
+> # Calculate, update and print the inverse of the original matrix.
 > cacheSolve (cacheObject)
            [,1]        [,2]        [,3]
 [1,]  1.0909091 -0.54545455 -0.09090909
