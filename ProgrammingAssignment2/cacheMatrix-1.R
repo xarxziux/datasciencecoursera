@@ -1,3 +1,20 @@
+# cacheMatrix-1.R
+# Version 0.0.1-alpha
+# Created 19-May-2016
+# Last updated 19-May-2016
+
+# This is an alternative version of my submission of the second programming
+# assignment for the Coursesa R Programming course.  This version goes beyond
+# the basic requirements for the course by adding additional error-checking
+# routines, and drawing in ideas from other parts of the course materials.
+
+# This version was partially founded on my attempt to understand what the
+# course-provided example, cachmean.R was doing, and partially from my
+# interest in finding a simpler way of solving the same problem.  This script
+# is still under development and is NOT my official submission, for that see
+# the file cachematrix.R in this repo, but I intend for it to perform the same
+# purpose as that submission, but with extra bells and whistles.
+
 makeCacheMatrix <- function (baseMatrix = matrix()) {
   
   # Set the initial value for the inverted matrix
