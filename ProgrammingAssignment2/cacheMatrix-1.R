@@ -83,9 +83,9 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
       return (invMatrix)
     }
 
-    invMatrix <- tryCatch (
+    invMatrix <<- tryCatch (
       solve (baseMatrix, ...),
-      error <- function() {
+      error = function() {
         
         message ("solve() function returned an error.")
         nonInvertible <<- TRUE
