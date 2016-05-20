@@ -19,7 +19,22 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   
   # Set the initial value for the inverted matrix
   invMatrix <- NULL
-
+  
+  # Thus value is a boolean indicating whether the base matrix is invertible.
+  # Essentially the object has three states:
+  
+  # 1. nonInvertible = FALSE  && invMatrix == NULL
+  # 2. nonInvertible = FALSE  && invMatrix != NULL
+  # 3. nonInvertible = TRUE  && invMatrix == NULL
+  
+  # The first condition exists when baseMatrix is a square matrix but it is not
+  # yet determined whether it is invertible.
+  # The second state exists if baseMatrix is invertible and the inverse has
+  # been calculated and stored.
+  # The third exists if baseMatrix is not invertible.
+  # The state nonInvertible = true  && baseMatrix != NULL should not be reachable.
+  nonInvertible <- FALSE
+  
   # Set the value for the base matrix.  As the value of the inverted 
   # matrix depends on the base matrix, its value needs to be reset
   # until its recalculated.
@@ -27,19 +42,30 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
 
     if (is.matrix (newMatrix)) {
 
-      if !(all(dim (baseMatrix) == dim (newMatrix)) && all(x == y)) {
+      if (!(all(dim (baseMatrix) == dim (newMatrix)) && all(x == y))) {
 
         # This section can only be reached if newMatrix is a valid matrix
         # and is NOT identical to baseMatrix
         baseMatrix <<- newMatrix
-        invMatrix <<- NULL
+        invMatrix <<- NULL        
 
+        # Set the value of the nonInvertible boolean based on whether the
+        # new matrix is square or not
+        nonInvertible <<- (dim (testMatrix)[1] != dim (testMatrix)[2])
+      
+      } else {
+        
+        message (c ("The assignment matrix is equivalent to the existing",
+            " matrix.  The value of the base matrix has NOT been changed."))
+        
       }
 
     } else {
 
-      print (c ("Non-matrix arguement sent to set() function.",
-        "The value of the base matrix has NOT been changed."))
+      message (c ("Non-matrix argument sent to set() function.",
+          "The value of the base matrix has NOT been changed."))
+      
+    }
 
   }
 
@@ -47,15 +73,32 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
     baseMatrix
   }
   
-  setInverse <- function(newInvMatrix) {
-    invMatrix <<- newInvMatrix
+  setInverse <- function(...) {
+    
+    if (nonInvertible) {
+      message ("Base matrix is non-invertible.")
+      return (NULL)
+    } else if (!is.null (invMatrix)) {
+      message ("Getting cached data.")
+      return (invMatrix)
+    }
+
+    invMatrix <- tryCatch (
+      solve (baseMatrix, ...),
+      error <- function() {
+        
+        message ("solve() function returned an error.")
+        nonInvertible <<- TRUE
+        
+      }
+    )
   }
   
   getInverse <- function() {
     invMatrix
   }
   
-  invisible(
+  invisible (
     list (
       set = set,
       get = get,
@@ -65,17 +108,15 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   )
 }
 
-cacheSolve <- function (x, ...) {
+cacheSolve <- function (cacheObj, ...) {
   
-  inv <- x$getInverse()
-  
-  if (!is.null (inv)) {
+  inverse <- cacheObj$getInverse (...)
+
+  if (!is.null (inverse)) {
     message ("Getting cached data.")
-    return (inv)
+    return (inverse)
+  } else {
+    cacheObj$setInverse(...)
   }
   
-  data <- x$get()
-  inv <- solve (data, ...)
-  x$setInverse (inv)
-  inv
 }

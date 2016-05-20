@@ -1,5 +1,5 @@
 # cacheMatrix.R
-# Version 0.0.1
+# Version 0.0.2
 # Created 26-Feb-2016
 # Last updated 19-May-2016
 

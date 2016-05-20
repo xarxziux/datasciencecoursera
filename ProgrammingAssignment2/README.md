@@ -1,7 +1,7 @@
 # Coursera R Programming Course #
 # Programming Assignment 2 #
 
-This is my submission for the 2nd programming assignment on the Coursera MOOC [https://www.coursera.org/learn/r-programming](R Programming).  The course submission is contained in the file cachematrix.R.  The file cachemean.R is the example provided by the course on which my submission is based on. 
+This is my submission for the 2nd programming assignment on the Coursera MOOC [https://www.coursera.org/learn/r-programming](R Programming).  The file cachematrix.R is my official course submission.  The file cachemean.R is the example provided by the course on which my submission is based.  Finally the file cacheMatrix-1.R is my attempt to take the script beyond basic assignment requirements by adding data validation and error-checking routines, and by redesigning the original concept in ways that seem more in keeping with the principles of object-based programming.
 
 
 ### Usage sample
