@@ -1,7 +1,7 @@
 # cacheMatrix.R
-# Version 0.0.2
+# Version 0.0.3
 # Created 26-Feb-2016
-# Last updated 19-May-2016
+# Last updated 21-May-2016
 
 # This is my official submission for the second programming assignment for the
 # Coursesa R Programming course.  This script is essentially a re-write of the
@@ -11,8 +11,8 @@
 
 # This function creates the basic data structures needed for this assignment.
 # In essence it is an object with 2 properties and 4 methods.  The methods are
-# stored in a list that is returned, while the properties are stored...
-# somewhere.  I know this code works as I've tested it enough. I'm just not
+# stored in a returned list, while the properties are stored... somewhere.
+# I know this code works as I've tested it enough. I'm just not
 # entirely clear how yet.
 makeCacheMatrix <- function (baseMatrix = matrix()) {
   
@@ -33,11 +33,11 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   
   # *In theory* this function updates the inverse matrix, as it is called
   # from the cacheSolve() function, but in reality it just updates the value
-  # of the inverse matrix to whatever value it is sentm which without
+  # of the inverse matrix to whatever value it is sent to it, which without
   # error-checking could be absolutely anything.  The invMatrix value may be
-  # storing a chicken sandwich for all this function knows.  In a real-world
-  # setting, this looks like a poor design decision.  Surely the cacheSolve()
-  # function should be contained within this function?
+  # storing a chicken sandwich for all this function knows.  In the context of
+  # object-based programming, this looks like a poor design decision.  Surely
+  # the cacheSolve() function should be contained within this function?
   setInverse <- function(newInvMatrix) {
     invMatrix <<- newInvMatrix
   }
@@ -73,8 +73,9 @@ cacheSolve <- function (x, ...) {
   }
   
   # ...otherwise calculate it and update the object.
-  # data <- x$get() # Unnecessary imtermediate value?
   inv <- solve (x$get(), ...)
   x$setInverse (inv)
   inv
 }
+
+
