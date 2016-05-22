@@ -1,6 +1,13 @@
 #  PROGRAMMING ASSIGNMENT 2 CHANGELOG
 
-## 2016-05-2016
+## 2016-05-22
+
+### Changed
+- cachematrix.R: minor typo corrrections.
+- cachematrix.R: removed unnecessary "data"" value from cachesolve function.
+
+## 2016-05-20
+
 ### Changed (TESTING)
 - Reverted to "=" assignment operator in return list for both R scripts.  Apparently the "<-" operator doesn't work in that situation.
 - Rewrote the cacheSolve() function in cacheMatrix-1.R.  It now only calls the getInverse() and setInverse() functions from the CacheMatrix object.
@@ -16,6 +23,7 @@
 - Created Testing branch
 
 ## 2016-05-19
+
 ### Changed
 - Replaced "=" assignment operators in return list construct with standard R "<-" operators.
 - Added usage sample to README.
