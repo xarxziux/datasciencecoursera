@@ -31,9 +31,9 @@ rankhospital <- function(state, condition, num = "best") {
     return ("invalid state 2")
     
   }
-  
+
   sList <- sList [!is.na (as.numeric (sList [[condition]])),]
-  sList <- sList [with (sList, order (sList [, condition], Hospital.Name)),]
+  sList <- sList [with (sList, order (as.numeric (sList [, condition]), Hospital.Name)),]
 
   if (num == "best") {
     
@@ -52,10 +52,6 @@ rankhospital <- function(state, condition, num = "best") {
     return (NA)
     
   }
-  
-  # print (nrow(sList))
-  # print (tMin)
-  # print (condition)
   
   sList [num, "Hospital.Name"]
   
