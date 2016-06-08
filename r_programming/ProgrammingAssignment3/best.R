@@ -20,7 +20,7 @@ best <- function(state, condition) {
 
   if ((class (state) != "character") | (length (state) != 1)) {
     
-    return ("invalid state 1")
+    return ("invalid state")
     
   }
   
@@ -31,7 +31,7 @@ best <- function(state, condition) {
   
   if (nrow (sList) == 0) {
     
-    return ("invalid state 2")
+    return ("invalid state")
     
   }
   
