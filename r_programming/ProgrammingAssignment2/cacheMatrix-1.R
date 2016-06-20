@@ -1,7 +1,7 @@
 # cacheMatrix-1.R
 # Version 0.0.1-alpha
 # Created 19-May-2016
-# Last updated 19-May-2016
+# Last updated 20-Jun-2016
 
 # This is an alternative version of my submission of the second programming
 # assignment for the Coursesa R Programming course.  This version goes beyond
@@ -20,7 +20,7 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   # Set the initial value for the inverted matrix
   invMatrix <- NULL
   
-  # Thus value is a boolean indicating whether the base matrix is invertible.
+  # This value is a boolean indicating whether the base matrix is invertible.
   # Essentially the object has three states:
   
   # 1. nonInvertible = FALSE  && invMatrix == NULL
@@ -37,7 +37,7 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   
   # Set the value for the base matrix.  As the value of the inverted 
   # matrix depends on the base matrix, its value needs to be reset
-  # until its recalculated.
+  # until it's recalculated.
   set <- function (newMatrix) {
 
     if (is.matrix (newMatrix)) {
