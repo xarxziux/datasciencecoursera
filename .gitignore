@@ -1,9 +1,0 @@
-#R and RStudio files
-.Rproj.user
-.Rhistory
-.RData
-.Rapp.history
-
-#Notepad++ backup files
-*.bak
-

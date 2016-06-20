@@ -11,9 +11,9 @@
 # This version was partially founded on my attempt to understand what the
 # course-provided example, cachmean.R was doing, and partially from my
 # interest in finding a simpler way of solving the same problem.  This script
-# is still under development and is NOT my official submission, for that see
-# the file cachematrix.R in this repo, but I intend for it to perform the same
-# purpose as that submission, but with extra bells and whistles.
+# is still under development and is NOT my official submission,, but I intend 
+# for it to perform the same purpose as that submission, but with extra bells
+# and whistles.
 
 makeCacheMatrix <- function (baseMatrix = matrix()) {
   
@@ -108,15 +108,4 @@ makeCacheMatrix <- function (baseMatrix = matrix()) {
   )
 }
 
-cacheSolve <- function (cacheObj, ...) {
-  
-  inverse <- cacheObj$getInverse (...)
 
-  if (!is.null (inverse)) {
-    message ("Getting cached data.")
-    return (inverse)
-  } else {
-    cacheObj$setInverse(...)
-  }
-  
-}
